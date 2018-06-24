@@ -13,10 +13,14 @@ export class App extends Component {
   };
 
   alOprimirBoton = e => {
+    const nombre = e.target.nombre.value;
     e.preventDefault();
-    this.setState({
-      nombre: e.target.nombre.value
-    });
+    if (typeof nombre === "string" && nombre.length > 0) {
+      this.setState({
+        nombre: nombre
+      });
+      e.target.nombre.value = "";
+    }
   };
 
   render() {
