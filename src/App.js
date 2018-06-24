@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Button
-} from "react-bootstrap";
+import { Grid } from "react-bootstrap";
+import { MensajeSaludo } from "./MensajeSaludo";
+import { FormaSaludo } from "./FormaSaludo";
 
 export class App extends Component {
   state = {
@@ -17,10 +13,16 @@ export class App extends Component {
     e.preventDefault();
     if (typeof nombre === "string" && nombre.length > 0) {
       this.setState({
-        nombre: nombre
+        nombre
       });
       e.target.nombre.value = "";
     }
+  };
+
+  manejarNuevoNombre = nombre => {
+    this.setState({
+      nombre
+    });
   };
 
   render() {
@@ -28,15 +30,8 @@ export class App extends Component {
     const { mensaje } = this.props;
     return (
       <Grid>
-        <h1>Hola {nombre}!</h1>
-        <p>{mensaje}</p>
-        <form onSubmit={this.alOprimirBoton}>
-          <FormGroup>
-            <ControlLabel>Nombre</ControlLabel>
-            <FormControl type="text" id="nombre" name="nombre" />
-            <Button type="submit">Saludar</Button>
-          </FormGroup>
-        </form>
+        <MensajeSaludo nombre={nombre} mensaje={mensaje} />
+        <FormaSaludo alObtenerNuevoNombre={this.manejarNuevoNombre} />
       </Grid>
     );
   }
