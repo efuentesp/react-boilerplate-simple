@@ -5,33 +5,20 @@ import { FormaSaludo } from "./FormaSaludo";
 
 export class App extends Component {
   state = {
-    nombre: this.props.nombre
+    nombre: this.props.nombre,
+    mensaje: this.props.mensaje
   };
 
-  alOprimirBoton = e => {
-    const nombre = e.target.nombre.value;
-    e.preventDefault();
-    if (typeof nombre === "string" && nombre.length > 0) {
-      this.setState({
-        nombre
-      });
-      e.target.nombre.value = "";
-    }
-  };
-
-  manejarNuevoNombre = nombre => {
-    this.setState({
-      nombre
-    });
+  manejarNuevoSaludo = datos => {
+    this.setState(datos);
   };
 
   render() {
-    const { nombre } = this.state;
-    const { mensaje } = this.props;
+    const { nombre, mensaje } = this.state;
     return (
       <Grid>
         <MensajeSaludo nombre={nombre} mensaje={mensaje} />
-        <FormaSaludo alObtenerNuevoNombre={this.manejarNuevoNombre} />
+        <FormaSaludo alObtenerNuevoSaludo={this.manejarNuevoSaludo} />
       </Grid>
     );
   }
