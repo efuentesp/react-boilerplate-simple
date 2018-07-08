@@ -3,7 +3,7 @@ import { Grid } from "react-bootstrap";
 import { MensajeSaludo } from "./MensajeSaludo";
 import { FormaSaludo } from "./FormaSaludo";
 
-export class App extends Component {
+export class Saludo extends Component {
   state = {
     nombre: this.props.nombre,
     mensaje: this.props.mensaje
@@ -24,9 +24,9 @@ export class App extends Component {
   }
 }
 
-App.defaultProps = {
+Saludo.defaultProps = {
   nombre: "React",
   mensaje: "Mensaje por default"
 };
 
-export default App;
+export default Saludo;
